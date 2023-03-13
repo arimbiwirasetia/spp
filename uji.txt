@@ -1,0 +1,97 @@
+program uji1;
+uses crt;
+const N: integer = 10;
+var T: array[1..10]of integer;
+    i, j: integer;
+
+procedure BacaArray(); //procedure untuk membaca 10 elemen array
+begin
+     for i:= 1 to N do
+	begin
+           write('Masukkan elemen ke-',i,': ');
+           read(T[i]);
+        end;
+end;
+
+procedure CetakArray(); //procedure untuk menampilkan elemen" array
+begin
+        for i:=1 to N do
+	begin
+		write(T[i],' ');
+		writeln();
+	end;
+end;
+
+function SortArray(): boolean; {function untuk mengurutkan array secara ascending,
+output = true ketika array sudah terurut}
+
+var
+	temp: integer;
+	sorted: boolean;
+begin
+	sorted:=true;
+	for i:=1 to N do
+	begin
+		for j:=1 to N-1 do
+		begin
+			if (T[j] > T[j+1]) then
+			begin
+				temp:=T[j];
+				T[j]:=T[j+1];
+				T[j+1]:=temp;
+				sorted:=false;
+			end;
+		end;
+	end;
+	SortArray := sorted;
+end;
+
+begin
+        clrscr();
+        BacaArray();
+        writeln('array before sorting:');
+        CetakArray();
+	SortArray();
+	writeln('array after sorting:');
+	if (SortArray = true) then
+             CetakArray();
+	readkey();
+end.
+
+
+
+program uji2;
+uses crt;
+var var_text: TEXT;
+
+begin
+clrscr;
+        assign(var_text, 'halo.txt');
+        rewrite(var_text);
+        writeln(var_text, 'halo, ini program pertamaku!');
+        close(var_text);
+        readkey;
+end.
+
+
+
+program uji3;
+uses crt;
+var var_text: text;
+    pesan: string;
+
+begin
+    clrscr;
+    assign(var_text, 'halo.txt');
+    reset(var_text);
+
+    while not eof (var_text) do
+        begin
+             readln (var_text, pesan);
+             writeln(pesan);
+        end;
+    close(var_text);
+    readkey;
+end.
+
+
